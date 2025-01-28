@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:37:09 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 16:50:08 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:49:16 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	zoom(t_fdf *fdf)
 void	rotation(t_fdf *fdf)
 {
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
-		fdf->camera->y_rotation += 0.0175;
+		fdf->camera->y_rotation += 0.177;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_D))
-		fdf->camera->y_rotation -= 0.0175;
+		fdf->camera->y_rotation -= 0.177;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_W))
-		fdf->camera->x_rotation += 0.0175;
+		fdf->camera->x_rotation += 0.177;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
-		fdf->camera->x_rotation -= 0.0175;
+		fdf->camera->x_rotation -= 0.177;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_Q))
-		fdf->camera->z_rotation += 0.0175;
+		fdf->camera->z_rotation += 0.177;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_E))
-		fdf->camera->z_rotation -= 0.0175;
+		fdf->camera->z_rotation -= 0.177;
 }
 
 void	z_scale(t_fdf *fdf)

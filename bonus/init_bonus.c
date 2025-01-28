@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:59:56 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 14:29:34 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:33:03 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_fdf	*init_fdf(char *map)
 	fdf->map = parse(map);
 	if (!fdf->map)
 		return (free(fdf), NULL);
-	fdf->mlx = mlx_init(WIDTH_WINDOW, HEIGHT_WINDOW, "FDF", 1);
+	fdf->mlx = mlx_init(WIDTH_WINDOW, HEIGHT_WINDOW, "FDF_BONUS", 1);
 	if (!fdf->mlx)
 		exit_msg(6);
 	fdf->image = mlx_new_image(fdf->mlx, WIDTH_WINDOW, HEIGHT_WINDOW);

@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:55:09 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 16:43:09 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:37:37 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static t_map	*new_map(void)
 	map->height = 0;
 	map->width = 0;
 	map->z_top = 0;
+	map->invert_color = 0;
 	map->matrix = NULL;
 	return (map);
 }

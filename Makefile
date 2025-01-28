@@ -18,14 +18,15 @@ SRCS_BONUS     := $(addprefix $(SRCS_DIR_BONUS), main_bonus.c errors_and_free_bo
 			parse_bonus.c render_bonus.c render_utils_bonus.c draw_line_utils_bonus.c parse_utils_bonus.c \
 			colors_bonus.c keyboard_command_utils_bonus.c rotation_bonus.c)
 
-DIR_OBJ			:= objs
-DIR_OBJ_BONUS	:= objs_bonus
+DIR_OBJ			:= .objs
+DIR_OBJ_BONUS	:= .objs_bonus
 OBJS		:= $(SRCS:$(SRCS_DIR)%.c=$(DIR_OBJ)/%.o)
 OBJS_BONUS	:= $(SRCS_BONUS:$(SRCS_DIR_BONUS)%.c=$(DIR_OBJ_BONUS)/%.o)
 
 # --show-leak-kinds=all
-VALGRIND	:= valgrind --leak-check=full --track-origins=yes
+VALGRIND	:= valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all
 NO_PRINT	:= --no-print-directory
+CYAN		:= \033[1;36m
 GREEN		:= \033[1;32m
 END 		:= \033[0m
 
@@ -58,7 +59,7 @@ $(NAME_BONUS): $(OBJS_BONUS)
 clean:
 	@rm -rf $(LIBMLX)/build
 	@make -C $(LIBFT) clean $(NO_PRINT)
-	@rm -rf $(DIR_OBJ)
+	@rm -rf $(DIR_OBJ) $(DIR_OBJ_BONUS)
 	@echo -n "$(GREEN)Cleaned$(END)"
 
 fclean: clean
@@ -70,14 +71,21 @@ fclean: clean
 re: fclean all
 
 test:
-	@rm -f trace.txt
+	rm -f trace.txt
 	./fdf maps/test_maps/42.fdf >> trace.txt 2>&1
 
 test_bonus:
-	@rm -f trace.txt
-	./fdf_bonus maps/test_maps/42.fdf >> trace.txt 2>&1
+	rm -f trace.txt
+	$(VALGRIND) ./fdf_bonus maps/test_maps/42.fdf >> trace.txt 2>&1
 
 norm:
-	@norminette libs/libft mandatory bonus
+	@echo "\n$(CYAN)=======$(END) $(GREEN)LIBFT$(END) $(CYAN)=======$(END)"
+	@norminette libs/libft | sed 's/OK/\x1b[1;32m&\x1b[0m/g' | sed 's/libft/\x1b[1;31m&\x1b[0m/g'
+	@echo "\n$(CYAN)=======$(END) $(GREEN)MANDATORY$(END) $(CYAN)=======$(END)"
+	@norminette mandatory | sed 's/OK/\x1b[1;32m&\x1b[0m/g' | sed 's/mandatory/\x1b[1;33m&\x1b[0m/g'
+	@echo "\n$(CYAN)=======$(END) $(GREEN)BONUS$(END) $(CYAN)=======$(END)"
+	@norminette bonus | sed 's/OK/\x1b[1;32m&\x1b[0m/g' | sed 's/bonus/\x1b[1;35m&\x1b[0m/g'
+	@echo "\n$(CYAN)=======$(END) $(GREEN)INCLUDES$(END) $(CYAN)=======$(END)"
+	@norminette includes | sed 's/OK/\x1b[1;32m&\x1b[0m/g' | sed 's/includes/\x1b[1;36m&\x1b[0m/g'
 
 .PHONY: all clean fclean re libmlx libft test bonus test_bonus norm

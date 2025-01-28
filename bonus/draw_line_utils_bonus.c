@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:57:56 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 16:53:16 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:15:47 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	put_pixel(t_fdf *fdf, int x, int y, uint32_t color)
 {
 	if (x <= 0 || x >= WIDTH_WINDOW || y <= 0 || y >= HEIGHT_WINDOW)
 		return ;
-	mlx_put_pixel(fdf->image, x, y, color);
+	if (fdf->map->invert_color == 1)
+		mlx_put_pixel(fdf->image, x, y, invert_color(color));
+	else
+		mlx_put_pixel(fdf->image, x, y, color);
 }
 
 void	axis_y_line(t_fdf *fdf, t_coordinates start, t_coordinates end)

@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:57:36 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 15:50:17 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:06:24 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	render(void *param)
 	t_fdf	*fdf;
 
 	fdf = (t_fdf *)param;
-	background(fdf);
+	if (fdf->map->invert_color == 1)
+		invert_background(fdf);
+	else
+		background(fdf);
 	y = 0;
 	while (y + 1 <= fdf->map->height)
 	{

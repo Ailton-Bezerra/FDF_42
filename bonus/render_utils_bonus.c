@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:55:44 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 16:50:56 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:15:43 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,21 @@ void	isometry(t_fdf *fdf, t_coordinates *start, t_coordinates *end)
 	end->y = new_end.y;
 }
 
-static void	new_line_data(t_draw_line *line, t_coordinates start,
-	t_coordinates end)
+static void	new_line_data(t_draw_line *line, t_coordinates *start,
+	t_coordinates *end)
 {
-	line->diff_x = ft_abs(end.x - start.x);
-	line->diff_y = ft_abs(end.y - start.y);
+	start->x = roundf(start->x);
+	start->y = roundf(start->y);
+	end->x = roundf(end->x);
+	end->y = roundf(end->y);
+	line->diff_x = ft_abs(end->x - start->x);
+	line->diff_y = ft_abs(end->y - start->y);
 	line->control = 0;
-	if (end.x > start.x)
+	if (end->x > start->x)
 		line->inc_x = 1;
 	else
 		line->inc_x = -1;
-	if (end.y > start.y)
+	if (end->y > start->y)
 		line->inc_y = 1;
 	else
 		line->inc_y = -1;
@@ -65,7 +69,7 @@ void	draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {
 	t_draw_line	line;
 
-	new_line_data(&line, start, end);
+	new_line_data(&line, &start, &end);
 	if (line.diff_x == 0)
 		axis_y_line(fdf, start, end);
 	if (line.diff_y == 0)

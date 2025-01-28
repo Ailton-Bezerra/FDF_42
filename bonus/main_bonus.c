@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:15:39 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 16:45:38 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:04:00 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ static void	keyboard_command(void *param)
 	fdf = (t_fdf *)param;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(fdf->mlx);
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_I))
+		fdf->map->invert_color = 1;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_N))
+		fdf->map->invert_color = 0;
 	reset_view(fdf);
 	projection(fdf);
 	movement(fdf);
