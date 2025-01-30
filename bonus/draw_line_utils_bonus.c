@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:57:56 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/28 11:15:47 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/30 09:11:24 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ void	axis_x_line(t_fdf *fdf, t_coordinates start, t_coordinates end)
 void	diag_y_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end)
 {
-	int		position;
 	int		grad_len;
 
-	position = 0;
 	grad_len = ft_abs(end.y - start.y);
 	line.control = line.diff_y / 2;
 	put_pixel(fdf, (int)start.x, (int)start.y, start.color);
@@ -81,7 +79,6 @@ void	diag_y_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 			start.x += line.inc_x;
 			line.control += line.diff_y;
 		}
-		position++;
 		put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	}
 }
@@ -89,10 +86,8 @@ void	diag_y_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 void	diag_x_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end)
 {
-	int		position;
 	int		grad_len;
 
-	position = 0;
 	grad_len = ft_abs(end.x - start.x);
 	line.control = line.diff_x / 2;
 	put_pixel(fdf, (int)start.x, (int)start.y, start.color);
@@ -105,7 +100,6 @@ void	diag_x_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 			start.y += line.inc_y;
 			line.control += line.diff_x;
 		}
-		position++;
 		put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	}
 }

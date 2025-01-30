@@ -24,7 +24,7 @@ OBJS		:= $(SRCS:$(SRCS_DIR)%.c=$(DIR_OBJ)/%.o)
 OBJS_BONUS	:= $(SRCS_BONUS:$(SRCS_DIR_BONUS)%.c=$(DIR_OBJ_BONUS)/%.o)
 
 # --show-leak-kinds=all
-VALGRIND	:= valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all
+VALGRIND	:= valgrind --leak-check=full --track-origins=yes
 NO_PRINT	:= --no-print-directory
 CYAN		:= \033[1;36m
 GREEN		:= \033[1;32m
@@ -76,7 +76,7 @@ test:
 
 test_bonus:
 	rm -f trace.txt
-	$(VALGRIND) ./fdf_bonus maps/test_maps/42.fdf >> trace.txt 2>&1
+	./fdf_bonus maps/test_maps/elem-col.fdf >> trace.txt 2>&1
 
 norm:
 	@echo "\n$(CYAN)=======$(END) $(GREEN)LIBFT$(END) $(CYAN)=======$(END)"

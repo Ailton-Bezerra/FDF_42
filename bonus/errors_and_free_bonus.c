@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:05:47 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/26 13:39:15 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:54:46 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	exit_msg(int msg)
 {
 	if (msg == 1)
-		ft_putendl_fd("\033[1;31mValid format: ./fdf *.fdf\033[0m", 1);
+		ft_putendl_fd("\033[1;31mValid format: ./fdf_bonus *.fdf\033[0m", 1);
 	else if (msg == 2)
 		ft_putendl_fd("\033[1;31mValid map format: *.fdf\033[0m", 1);
 	else if (msg == 3)
